@@ -1,3 +1,7 @@
+import xlrd
+import pandas as pd
+import re
+
 xls = pd.read_excel('ListG.xlsx', index_col=0)
 xls2 = pd.read_excel('List1.xlsx', index_col=0, sheet_name='Listtwo')
  
