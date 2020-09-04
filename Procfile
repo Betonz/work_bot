@@ -1,1 +1,1 @@
-web: python bot_ver_2.0.py
+hello: python bot_ver_2.0.py
