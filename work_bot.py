@@ -3,7 +3,7 @@ import pandas as pd
 import re
 
 xls = pd.read_excel(r'https://github.com/Betonz/work_bot/blob/master/ListG.xlsx?raw=true', index_col=0)
-xls2 = pd.read_excel(r'https://github.com/Betonz/work_bot/blob/master/ListG.xlsx?raw=tru', index_col=0, sheet_name='Listtwo')
+xls2 = pd.read_excel(r'https://github.com/Betonz/work_bot/blob/master/ListG.xlsx?raw=true', index_col=0, sheet_name='Listtwo')
  
 print (xls)
 print (xls2)
