@@ -1,4 +1,3 @@
-import xlrd
 import pandas as pd
 import re
 import telebot
