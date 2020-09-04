@@ -1,6 +1,9 @@
 import xlrd
 import pandas as pd
 import re
+import telebot
+
+bot = telebot.TeleBot('1228594799:AAEekqyZCwbJ3wGrVjeDa64RDHiWgzjZm50')
 
 xls = pd.read_excel(r'https://github.com/Betonz/work_bot/blob/master/ListG.xlsx?raw=true', index_col=0)
 xls2 = pd.read_excel(r'https://github.com/Betonz/work_bot/blob/master/ListG.xlsx?raw=true', index_col=0, sheet_name='Listtwo')
