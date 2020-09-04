@@ -39,7 +39,6 @@ def helpus(message):
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     sti = str(message.text)
-    print(message.text)
     floor_t = bool(re.search(r'^\d{1}\sэтаж', sti))
     help_t = bool(re.search(r'^\помощь', sti))
     room_t = bool(re.search(r'^(А|Б|В|Г){1}\d{3}\W{1}\d{1}|^(А|Б|В|Г){1}\d{3}', sti))
