@@ -39,17 +39,18 @@ def helpus():
     
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    floor_t = bool(re.search(r'^\d{1}\sэтаж', message))
-    help_t = bool(re.search(r'^\помощь', message))      
-    room_t = bool(re.search(r'^(А|Б|В|Г){1}\d{3}\W{1}\d{1}|^(А|Б|В|Г){1}\d{3}', message))
+    sti = str(message)
+    floor_t = bool(re.search(r'^\d{1}\sэтаж', sti))
+    help_t = bool(re.search(r'^\помощь', sti))      
+    room_t = bool(re.search(r'^(А|Б|В|Г){1}\d{3}\W{1}\d{1}|^(А|Б|В|Г){1}\d{3}', sti))
     if floor_t == True:
-        floor (message)
+        floor (sti)
     elif help_t == True:
         helpus ()
     elif room_t == True:
-        room_t (message)
+        room_t (sti)
     else:
-        bot.send_message(message)
+        bot.send_message(message.from_user.id, 'Значение не верно')
 
 bot.polling(none_stop=True, interval=0)
 
