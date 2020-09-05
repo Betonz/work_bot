@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import telebot
+from telebot import types
 
 bot = telebot.TeleBot('1228594799:AAEekqyZCwbJ3wGrVjeDa64RDHiWgzjZm50')
 
@@ -34,8 +35,37 @@ def floor(message):
 def helpus(message):
     bot.send_message(message.from_user.id, 'Поиск по помещениям: введите номер в формате "А101-1" или "А101"')
     bot.send_message(message.from_user.id, 'Поиск по этажу: введите этаж в формате "1 этаж"')
-    
-    
+
+@bot.message_handler(commands=['start', 'help'])
+def handle_start_help(message):
+    markup = types.ReplyKeyboardMarkup(row_width=2)
+    itembtn1 = types.KeyboardButton('/Этаж')
+    itembtn2 = types.KeyboardButton('/Комната')
+    itembtn3 = types.KeyboardButton('/start')
+    markup.add(itembtn1, itembtn2, itembtn3)
+    bot.send_message(message.from_user.id, "Выберите действие:", reply_markup=markup)
+
+@bot.message_handler(commands=['Этаж'])
+def handle_start_help(message):
+    markup = types.ReplyKeyboardMarkup(row_width=3)
+    itembtn = []
+    for i in xls2.index.tolist():
+        itembtn.append(types.KeyboardButton(f'{i} этаж'))
+    itembtn.append(types.KeyboardButton('/start'))
+    markup.add(*itembtn)
+    bot.send_message(message.from_user.id, "Выберите этаж:", reply_markup=markup)
+
+@bot.message_handler(commands=['Комната'])
+def handle_start_help(message):
+    markup = types.ReplyKeyboardMarkup(row_width=3)
+    itembtn = []
+    for i in xls.index.tolist():
+        itembtn.append(types.KeyboardButton(f'{i}'))
+    itembtn.append(types.KeyboardButton('/start'))
+    markup.add(*itembtn)
+    bot.send_message(message.from_user.id, "Выберите комнату:", reply_markup=markup)
+
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     sti = str(message.text)
